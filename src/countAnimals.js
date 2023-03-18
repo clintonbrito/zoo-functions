@@ -21,6 +21,6 @@ const countAnimals = (animal) => {
 
 countAnimals();
 
-// Para esse requisito, tive o auxílio fundamental da monitoria notura do Victor Matias no dia 16/03.
+// Para esse requisito, tive o auxílio fundamental da monitoria noturna do Victor Matias no dia 16/03.
 
 module.exports = countAnimals;
