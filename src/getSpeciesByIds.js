@@ -1,29 +1,11 @@
 const data = require('../data/zoo_data');
 
-// const { species } = require('../data/zoo_data');
-
-// const getSpeciesByIds = (...ids) => {
-//   const getAnimal = () => {
-//     if (ids === undefined) {
-//       return [];
-//     } if (ids.length === 1) {
-//       species.find((animal) => animal.id === ids);
-//       return getAnimal;
-//       console.log(getAnimal);
-//     }
-//   };
-//   return getAnimal;
-// };
-
 const getAnimal = data.species;
 
-const getSpeciesByIds = (...ids) => {
-  if (ids !== undefined) {
-    return [];
-  } if (ids.length === 1) {
-    getAnimal.find((animal) => animal.id === ids);
-    return getAnimal;
-  }
-};
+// 1) O .map é para percorrer o "array" com todos os ids que são passados como parâmetro;
+// 2) O find foi passado como função a ser executada dentro do .map para aí sim buscar pelo id o bicho que foi passado como parâmetro;
+const getSpeciesByIds = (...ids) => ids
+  .map((animal) => getAnimal
+    .find((bicho) => bicho.id === animal));
 
 module.exports = getSpeciesByIds;
