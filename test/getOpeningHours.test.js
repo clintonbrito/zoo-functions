@@ -4,6 +4,9 @@ describe('Testes da função getOpeningHours', () => {
   it('Verifica se a função existe', () => {
     expect(getOpeningHours).toBeDefined();
   });
+  it('Verifica se a função é uma função', () => {
+    expect(typeof getOpeningHours).toBe('function');
+  });
   it('Verifica se a função retorna o objeto específico caso não receba parâmetros', () => {
     expect(getOpeningHours()).toEqual({
       Tuesday: { open: 8, close: 6 },
@@ -31,12 +34,21 @@ describe('Testes da função getOpeningHours', () => {
     expect(() => getOpeningHours('Friday', '09:00-ZM')).toThrowError('The abbreviation must be \'AM\' or \'PM\'');
   });
   it('Para os argumentos Saturday e C9:00-AM deve lançar uma exceção com a mensagem: `The hour should represent a number`', () => {
-    expect(() => getOpeningHours('Sunday', '09:c0-AM')).toThrowError('The minutes should represent a number');
+    expect(() => getOpeningHours('Saturday', 'C9:00-AM')).toThrowError('The hour should represent a number');
+  });
+  it('Para os argumentos Saturday e 18:00-AM deve lançar uma exceção com a mensagem: `The hour must be between 0 and 12`', () => {
+    expect(() => getOpeningHours('Saturday', '18:00-AM')).toThrowError('The hour must be between 0 and 12');
   });
   it('Para os argumentos Sunday e 09:c0-AM deve lançar uma exceção com a mensagem: `The minutes should represent a number`', () => {
+    expect(() => getOpeningHours('Sunday', '09:c0-AM')).toThrowError('The minutes should represent a number');
+  });
+  it('Para os argumentos Monday e 13:00-AM deve lançar uma exceção com a mensagem: `The hour must be between 0 and 12`', () => {
     expect(() => getOpeningHours('Monday', '13:00-AM')).toThrowError('The hour must be between 0 and 12');
   });
   it('Para os argumentos Tuesday e 09:60-AM deve lançar uma exceção com a mensagem: `The minutes must be between 0 and 59`', () => {
     expect(() => getOpeningHours('Tuesday', '09:60-AM')).toThrowError('The minutes must be between 0 and 59');
+  });
+  it('Testando horário das 12h', () => {
+    expect(() => getOpeningHours('Monday', '12:00-ZM')).toThrowError('The abbreviation must be \'AM\' or \'PM\'');
   });
 });
