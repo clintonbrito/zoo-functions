@@ -11,6 +11,7 @@ const entrantsTest = [
 ];
 
 const countEntrants = (entrants) => {
+  // if (!entrants) return 0;
   const entrantsObj = { adult: 0, child: 0, senior: 0 };
   entrants.reduce((acc, { age }) => {
     // const { age } = curr;
@@ -29,6 +30,7 @@ const countEntrants = (entrants) => {
 // child: 20.99
 
 const calculateEntry = (entrants) => {
+  if (!entrants) return 0;
   const entrantsObj = countEntrants(entrants);
   const sumAdult = entrantsObj.adult * prices.adult;
   const sumChild = entrantsObj.child * prices.child;
@@ -36,6 +38,6 @@ const calculateEntry = (entrants) => {
   return sumAdult + sumChild + sumSenior;
 };
 
-console.log(calculateEntry(entrantsTest));
+console.log(calculateEntry());
 
 module.exports = { calculateEntry, countEntrants };
