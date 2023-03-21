@@ -8,7 +8,7 @@ describe('Testes da função HandlerElephants', () => {
     expect(handlerElephants('names')).toEqual = ['Ilana', 'Orval', 'Bea', 'Jefferson'];
   });
   it('Verificar se o argumento `averageAge` deve retornar um número próximo a 10.5', () => {
-    expect(handlerElephants('avarageAge')).toEqual = 10.5;
+    expect(handlerElephants('averageAge')).toEqual = 10.5;
   });
   it('Verificar se o argumento `location` deve retornar a string `NW`', () => {
     expect(handlerElephants('location')).toEqual = 'NW';
