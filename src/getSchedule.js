@@ -30,4 +30,6 @@ const getSchedule = (scheduleTarget) => {
   return createObj();
 };
 
+// Requisito feito com o auxílio os magnânimos colegas Victor Duque e Bruno Salinas.
+
 module.exports = getSchedule;
